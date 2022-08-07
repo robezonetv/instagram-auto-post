@@ -1,0 +1,14 @@
+#!/bin/bash
+
+./001-screenshot
+./002-crop-image "86x86+420+66"
+./003-compare "./templates/101-new-post.png"
+
+RC=$?
+
+if [[ $RC -eq 0 ]]; then
+    adb shell input tap 463 105
+else
+    echo "Nejsem na uvodni strance"
+    exit 1
+fi

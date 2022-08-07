@@ -1,0 +1,3 @@
+#!/bin/bash
+
+convert screen.png -crop "$1" "./templates/$2"

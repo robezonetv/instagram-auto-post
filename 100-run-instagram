@@ -1,0 +1,14 @@
+#!/bin/bash
+
+./001-screenshot
+./002-crop-image "78x78+62+128"
+./003-compare "./templates/100-instagram-icon.png"
+
+RC=$?
+
+if [[ $RC -eq 0 ]]; then
+    adb shell input tap 100 160
+else
+    echo "Nejsem na domovske strance"
+    exit 1
+fi
