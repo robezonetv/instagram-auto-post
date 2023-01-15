@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ./100-run-instagram
-sleep 5
+sleep 15
 ./101-new-post
 sleep 5
 ./102-new-post
