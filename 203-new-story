@@ -1,0 +1,14 @@
+#!/bin/bash
+
+./001-screenshot
+./002-crop-image "50x50+333+1018"
+./003-compare "./templates/203-new-story.png"
+
+RC=$?
+
+if [[ $RC -eq 0 ]]; then
+    adb shell input swipe 361 1046 361 1046 10000
+else
+    echo "Nejsem na spravne strance"
+    exit 1
+fi

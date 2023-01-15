@@ -1,0 +1,14 @@
+#!/bin/bash
+
+./001-screenshot
+./002-crop-image "120x30+136+1199"
+./003-compare "./templates/204-new-story.png"
+
+RC=$?
+
+if [[ $RC -eq 0 ]]; then
+    adb shell input tap 136 1199
+else
+    echo "Nejsem na spravne strance"
+    exit 1
+fi
