@@ -14,4 +14,5 @@ run_wait "101-new-post"
 run_wait "202-new-story"
 run_wait "203-new-story"
 run_wait "204-new-story"
+sleep 120
 ./004-close-instagram 
