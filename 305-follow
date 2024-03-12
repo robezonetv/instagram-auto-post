@@ -1,0 +1,34 @@
+#!/bin/bash
+
+./001-screenshot
+./002-crop-image "300x1000+450+220"
+
+compare ./temp.png ./templates/305-follow.png compare.png
+
+convert compare.png -threshold 50% ./bw.png
+
+data=$(convert bw.png  txt:- | grep "#FFFFFF" | head -1 | cut -d":" -f1)
+
+count=$(echo -ne "$data" | wc -c)
+
+if [[ $count -eq 0 ]]; then
+    echo "No more follow"
+    exit 1
+fi
+
+move=0
+
+x=$(echo "$data" | cut -d"," -f1)
+y=$(echo "$data" | cut -d"," -f2)
+
+posX=$(( $x + 450 ))
+posY=$(( $y + 220 ))
+
+RC=$?
+
+if [[ $RC -eq 0 ]]; then
+    adb shell input tap $posX $posY
+else
+    echo "Nejsem na uvodni strance"
+    exit 1
+fi
