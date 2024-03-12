@@ -1,18 +1,20 @@
 #!/bin/bash
 
 ./001-screenshot
-./002-crop-image "110x100+600+50"
+./002-crop-image "210x150+250+1180"
 ./003-compare "./templates/104-new-post.png"
 
 RC=$?
 
 if [[ $RC -eq 0 ]]; then
-    adb shell input tap 184 246
+    adb shell input tap 145 719
     sleep 2
     text=$(echo "$1" | sed 's/ /%s/g')
     adb shell input text "$text"
     sleep 2
-    adb shell input tap 670 105
+    adb shell input tap 107 659
+    sleep 2
+    adb shell input tap 200 1250
 else
     echo "Nejsem na spravne strance"
     exit 1
